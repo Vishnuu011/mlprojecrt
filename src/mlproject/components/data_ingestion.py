@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from src.mlproject.logger import logging
 from src.mlproject.exception import CustomException
 from dataclasses import dataclass
-from src.mlproject.utils import load_dataframe
+#from src.mlproject.utils import load_dataframe
 
 @dataclass
 class DataIngestionConfig:
@@ -26,7 +26,7 @@ class DataIngestion:
         logging.info("data ingestion started")
 
         try:
-            data=load_dataframe("experiments/data","gemstone.csv")
+            data=pd.read_csv("/workspaces/mlprojecrt/experiments/data/gemstone.csv")
             logging.info("loaded gemstone dataset")
 
             os.makedirs(os.path.dirname(os.path.join(self.ingestion_config.raw_data_path)), exist_ok=True)
@@ -51,5 +51,11 @@ class DataIngestion:
             logging.info("exception durning occured data ingestion stage")
             raise CustomException(e,sys)     
 
+
+
+if __name__=="__main__":
+    obj=DataIngestion()
+
+    obj.initiate_data_ingestion()
 
      
