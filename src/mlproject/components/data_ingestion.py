@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 from src.mlproject.logger import logging
 from src.mlproject.exception import CustomException
 from dataclasses import dataclass
-from pathlib import Path
 from src.mlproject.utils import load_dataframe
 
 @dataclass
